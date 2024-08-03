@@ -6,8 +6,10 @@
     color: #ddd;
     border-bottom: 2px solid rgb(206, 93, 24);
 }
-.logo{
-    width: max(12vw,120px);
+.navbar h1{
+    font-size: max(3vw, 35px);
+    font-weight: 700;
+    color: orange;
 }
 .navbar ul{
     display: flex;

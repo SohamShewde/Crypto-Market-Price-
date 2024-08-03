@@ -1,16 +1,20 @@
 import React, { useContext } from 'react'
-import './Navbar.css' 
+import './Navbar.css'
 import logo from "../../assets/logo.png"
 import arrow_icon from "../../assets/arrow_icon.png"
 import { coinContext } from '../../context/Coin.context'
 import { Link } from 'react-router-dom'
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
 
-  const {setCurrency} = useContext(coinContext)
+  const { setCurrency } = useContext(coinContext)
+  const { loginWithRedirect } = useAuth0();
+  const { logout } = useAuth0();
+  const { isAuthenticated,user } = useAuth0();
 
   const currencyHandler = (e) => {
-    switch (e.target.value){
+    switch (e.target.value) {
       case "usd": {
         setCurrency({
           name: "usd",
@@ -36,22 +40,30 @@ const Navbar = () => {
   }
   return (
     <div className='navbar'>
-        <img src={logo} alt=""  className='logo' />
-        <ul>
-            <Link to={'/'}><li>Home</li></Link>
-            <li>Features</li>
-            <li>Pricing</li>
-            <li>Blog</li>
-        </ul>
+      <h1>CoinSight</h1>
+      <ul>
+        <Link to={'/'}><li>Home</li></Link>
+        <li>Pricing</li>
+        <li>Exchange Rate</li>
+      </ul>
 
-        <div className="nav-right">
-            <select onChange={currencyHandler}>
-                <option value="usd">USD</option>
-                <option value="inr">INR</option>
-                <option value="eur">EUR</option>
-            </select>
-            <button>Sign Up <img src={arrow_icon} /></button>
-        </div>
+      <div className="nav-right">
+        <select onChange={currencyHandler}>
+          <option value="usd">USD</option>
+          <option value="inr">INR</option>
+          <option value="eur">EUR</option>
+        </select>
+
+        {
+          isAuthenticated ? (
+            <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+              Log Out
+            </button>
+          ) :   (<button onClick={() => loginWithRedirect()}>Log In</button>)
+        }
+        
+
+      </div>
     </div>
   )
 }
