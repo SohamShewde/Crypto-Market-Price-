@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom"
 import Home from "./pages/Home/Home"
 import Coin from "./pages/Coin/Coin"
 import Footer from "./components/Footer/Footer"
+import Exchange from "./components/Exchange/Exchange"
 
 function App() {
 

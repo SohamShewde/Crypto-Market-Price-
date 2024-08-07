@@ -42,9 +42,7 @@ const Navbar = () => {
     <div className='navbar'>
       <h1>CoinSight</h1>
       <ul>
-        <Link to={'/'}><li>Home</li></Link>
-        <li>Pricing</li>
-        <li>Exchange Rate</li>
+        {/* <Link to={'/'}><li>Home</li></Link> */}
       </ul>
 
       <div className="nav-right">
@@ -59,7 +57,7 @@ const Navbar = () => {
             <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
               Log Out
             </button>
-          ) :   (<button onClick={() => loginWithRedirect()}>Log In</button>)
+          ) :  (<button onClick={() => loginWithRedirect()} className='login'>Log In</button>)
         }
         
 

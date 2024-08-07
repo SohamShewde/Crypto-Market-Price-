@@ -32,10 +32,8 @@ const Home = () => {
   return (
     <div className='home'>
       <div className="hero">
-        <h1>Largest <br/> Crypto MarketPlace</h1>
-        <p>Welcome to the world largest CryptoCurrency marketplace
-          SignUp to explore more about Crypto.
-        </p>
+        <h1>Largest Crypto MarketPlace</h1>
+        
         <form onSubmit={searchHandler}>
           <input onChange={inputHandler} list='coinlist' value={input} type="text" placeholder='Search Crypto.....' required />
 
