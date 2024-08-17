@@ -11,7 +11,7 @@ const Navbar = () => {
   const { setCurrency } = useContext(coinContext)
   const { loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
-  const { isAuthenticated,user } = useAuth0();
+  const { isAuthenticated} = useAuth0();
 
   const currencyHandler = (e) => {
     switch (e.target.value) {
